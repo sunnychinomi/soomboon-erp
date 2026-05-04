@@ -105,15 +105,13 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 // ─── Pipeline ─────────────────────────────────────────────────────
-if (app.Environment.IsDevelopment())
+// Swagger enabled in all environments for now (disable in production later)
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "S.ARAN API v1");
-        c.RoutePrefix = "swagger";
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "S.ARAN API v1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseSerilogRequestLogging();
 
