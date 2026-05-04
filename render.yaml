@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: soomboon-api
+    runtime: docker
+    repo: https://github.com/sunnychinomi/soomboon-erp
+    branch: main
+    rootDir: api
+    dockerfilePath: ./Soomboon.Api/Dockerfile
+    region: singapore
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__Default
+        sync: false  # Set manually in Render dashboard
+      - key: Jwt__Secret
+        generateValue: true
+      - key: Jwt__Issuer
+        value: soomboon-api
+      - key: Jwt__Audience
+        value: soomboon-web
+      - key: Jwt__ExpiryMinutes
+        value: "60"
+      - key: Jwt__RefreshExpiryDays
+        value: "30"
+      - key: Cors__AllowedOrigins__0
+        value: https://soomboon.softcraft.co.th
+      - key: Cors__AllowedOrigins__1
+        value: https://soomboon-erp.pages.dev
