@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply font-sans bg-paper text-ink;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .sa-mark {
+    font-family: 'Kanit', Impact, sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    background: linear-gradient(180deg, #f0e1a3 0%, #e8c757 25%, #d4b932 50%, #B7990D 75%, #7d6708 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    line-height: 0.9;
+  }
+
+  .sa-mark.mono {
+    background: none;
+    -webkit-text-fill-color: theme('colors.ink.DEFAULT');
+    color: theme('colors.ink.DEFAULT');
+  }
+
+  .btn-gold {
+    background: linear-gradient(180deg, #e8c757 0%, #B7990D 55%, #7d6708 100%);
+    color: #2a200a;
+    border: 1px solid #8a7008;
+    box-shadow:
+      0 1px 0 rgba(255, 236, 170, 0.5) inset,
+      0 4px 14px rgba(138, 112, 8, 0.28),
+      0 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 0 rgba(255, 236, 170, 0.35);
+    font-weight: 600;
+  }
+
+  .btn-gold:hover {
+    background: linear-gradient(180deg, #f0d873 0%, #d4b41a 55%, #997f10 100%);
+  }
+
+  .editorial-num {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1;
+  }
+
+  .login-pattern {
+    background:
+      radial-gradient(ellipse at 78% 22%, rgba(183, 153, 13, 0.14) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 55%, rgba(128, 161, 193, 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse at 18% 88%, rgba(112, 22, 30, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse at 88% 88%, rgba(186, 63, 29, 0.10) 0%, transparent 40%),
+      linear-gradient(135deg, #0a1530 0%, #192A51 45%, #22356b 100%);
+  }
+
+  .corner-bracket {
+    @apply absolute w-8 h-8;
+    border: 0 solid rgba(183, 153, 13, 0.45);
+  }
+
+  .enterprise-card {
+    @apply bg-white rounded-2xl relative;
+    box-shadow:
+      0 0 0 1px rgba(25, 42, 81, 0.06),
+      0 1px 2px rgba(25, 42, 81, 0.04),
+      0 8px 24px rgba(25, 42, 81, 0.08),
+      0 24px 48px rgba(25, 42, 81, 0.06);
+  }
+
+  .enterprise-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, #B7990D 30%, #d4b932 50%, #B7990D 70%, transparent 100%);
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: theme('colors.rule.strong');
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}

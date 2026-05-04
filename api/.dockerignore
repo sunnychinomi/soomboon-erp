@@ -1,0 +1,14 @@
+**/.dockerignore
+**/.env
+**/.git
+**/.gitignore
+**/.vs
+**/.vscode
+**/*.*proj.user
+**/bin
+**/obj
+**/Dockerfile*
+**/node_modules
+**/npm-debug.log
+LICENSE
+README.md

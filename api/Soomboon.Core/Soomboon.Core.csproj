@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Soomboon.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Provides IdentityUser, IdentityRole base classes (without EF Core dependency) -->
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="9.0.0" />
+  </ItemGroup>
+
+</Project>
