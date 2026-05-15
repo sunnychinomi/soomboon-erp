@@ -20,6 +20,7 @@ dist-ssr/
 *.local
 .vite/
 .parcel-cache/
+*.tsbuildinfo
 
 # IDE
 .idea/

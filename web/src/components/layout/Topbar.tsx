@@ -2,16 +2,27 @@ import { Bell, Search, LogOut } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LangSwitch } from '@/components/ui/LangSwitch';
 import { useAuthStore } from '@/store/auth.store';
+import { useRoute } from '@/lib/router';
+
+const ROUTE_LABELS: Record<string, string> = {
+  'dashboard': 'แดชบอร์ด',
+  'inventory/product': 'รายการสินค้า',
+  'sales/customer': 'ลูกค้า',
+  'purchase/vendor': 'ผู้ขาย',
+  'admin/branch': 'สาขา',
+  'admin/employee': 'พนักงาน',
+};
 
 export function Topbar() {
   const { t } = useTranslation();
   const logout = useAuthStore((s) => s.logout);
+  const [route] = useRoute();
 
   return (
     <header className="bg-white border-b border-rule flex items-center px-7 gap-5 h-[60px]">
       <div className="font-mono text-[10.5px] tracking-[0.12em] text-mute uppercase">
         S.ARAN <span className="opacity-40 mx-1.5">/</span>
-        <span className="text-ink">{t('nav.dashboard')}</span>
+        <span className="text-ink">{ROUTE_LABELS[route] || 'หน้าหลัก'}</span>
       </div>
       <div className="flex-1 max-w-[400px] relative">
         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-mute" />

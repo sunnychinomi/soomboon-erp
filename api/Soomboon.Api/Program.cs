@@ -131,13 +131,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// ─── Run migrations on startup (optional, dev only) ──────────────
-if (app.Environment.IsDevelopment())
-{
-    using var scope = app.Services.CreateScope();
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    // Uncomment after first migration is created:
-    // await db.Database.MigrateAsync();
-}
+// ─── Seed initial data on startup ────────────────────────────────
+await Soomboon.Infrastructure.Data.DataSeeder.SeedAsync(app.Services);
 
 app.Run();

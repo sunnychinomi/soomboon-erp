@@ -1,38 +1,40 @@
-import { useTranslation } from 'react-i18next';
-import { Home, Box, Grid3x3, Users, Receipt, Tag, ShoppingCart, Truck, FileText } from 'lucide-react';
+import { Home, Box, Grid3x3, Users, Tag, ShoppingCart, Truck, Building2, BadgeCheck } from 'lucide-react';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 import { useAuthStore } from '@/store/auth.store';
+import { useRoute, type Route } from '@/lib/router';
 import { cn } from '@/lib/utils';
 
-const NAV = [
-  { section: 'primary', items: [{ key: 'dashboard', label: 'แดชบอร์ด', Icon: Home }] },
-  {
-    section: 'inventory', label: 'คลังสินค้า', items: [
-      { key: 'inventory/stock', label: 'สต็อกสินค้า', Icon: Box },
-      { key: 'inventory/product', label: 'รายการสินค้า', Icon: Grid3x3 },
-    ],
-  },
-  {
-    section: 'purchase', label: 'จัดซื้อ', items: [
-      { key: 'purchase/po', label: 'ใบสั่งซื้อ', Icon: ShoppingCart },
-      { key: 'purchase/vendor', label: 'ผู้ขาย', Icon: Truck },
-    ],
-  },
-  {
-    section: 'sales', label: 'การขาย', items: [
-      { key: 'sales/so', label: 'ใบขายสินค้า', Icon: Tag },
-      { key: 'sales/customer', label: 'ลูกค้า', Icon: Users },
-      { key: 'sales/invoice', label: 'ใบกำกับภาษี', Icon: Receipt },
-      { key: 'sales/credit-note', label: 'ใบลดหนี้', Icon: FileText },
-    ],
-  },
+interface NavItem {
+  key: Route;
+  label: string;
+  Icon: typeof Home;
+}
+
+interface NavSection {
+  label: string;
+  items: NavItem[];
+}
+
+const NAV: NavSection[] = [
+  { label: 'หลัก', items: [{ key: 'dashboard', label: 'แดชบอร์ด', Icon: Home }] },
+  { label: 'คลังสินค้า', items: [
+    { key: 'inventory/product', label: 'รายการสินค้า', Icon: Grid3x3 },
+  ]},
+  { label: 'จัดซื้อ', items: [
+    { key: 'purchase/vendor', label: 'ผู้ขาย', Icon: Truck },
+  ]},
+  { label: 'การขาย', items: [
+    { key: 'sales/customer', label: 'ลูกค้า', Icon: Users },
+  ]},
+  { label: 'ผู้ดูแลระบบ', items: [
+    { key: 'admin/branch', label: 'สาขา', Icon: Building2 },
+    { key: 'admin/employee', label: 'พนักงาน', Icon: BadgeCheck },
+  ]},
 ];
 
 export function Sidebar() {
-  const { t } = useTranslation();
   const { user } = useAuthStore();
-  // TODO: integrate with TanStack Router for active route
-  const activeRoute = 'dashboard';
+  const [route, navigate] = useRoute();
 
   return (
     <aside className="bg-indigo text-white/85 flex flex-col overflow-y-auto w-[248px]">
@@ -45,15 +47,16 @@ export function Sidebar() {
 
       <nav className="py-3 flex-1">
         {NAV.map((g) => (
-          <div key={g.section} className="py-2">
+          <div key={g.label} className="py-2">
             <div className="px-5 pb-1.5 font-mono text-[9px] tracking-[0.2em] uppercase text-white/35">
-              {g.label || t(`nav.${g.section}`)}
+              {g.label}
             </div>
             {g.items.map((item) => {
-              const active = activeRoute === item.key;
+              const active = route === item.key;
               return (
                 <a
                   key={item.key}
+                  onClick={(e) => { e.preventDefault(); navigate(item.key); }}
                   className={cn(
                     'flex items-center gap-3 px-5 py-2 cursor-pointer text-[13px] border-l-2 transition-all',
                     active
