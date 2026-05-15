@@ -94,6 +94,33 @@ export default function LoginPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-indigo-dark/90 via-transparent to-transparent" />
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(183,153,13,0.18),transparent_50%)]" />
 
+              {/* SA Logo overlay — ทับตัวหนังสือ AURORA AUTOMOTIVE บนจานเบรก */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[5]">
+                <div className="relative">
+                  {/* Glow ทอง */}
+                  <div className="absolute inset-0 bg-gold/30 blur-3xl scale-150 rounded-full" />
+                  {/* SA Logo */}
+                  <div className="relative flex flex-col items-center">
+                    <span
+                      className="sa-mark drop-shadow-[0_4px_16px_rgba(183,153,13,0.5)]"
+                      style={{ fontSize: 72 }}
+                    >
+                      SA
+                    </span>
+                    <div
+                      className="font-display font-bold text-[9px] tracking-[0.24em] mt-2 whitespace-nowrap"
+                      style={{
+                        background: 'linear-gradient(180deg, #f0e1a3 0%, #d4b932 50%, #8a7008 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                      }}
+                    >
+                      S.ARAN OIL & AUTOPART
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Content */}
               <div className="relative z-10 p-10 lg:p-14 h-full flex flex-col text-white">
                 {/* Top row */}
