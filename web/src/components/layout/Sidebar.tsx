@@ -1,4 +1,4 @@
-import { Home, Box, Grid3x3, Users, Tag, ShoppingCart, Truck, Building2, BadgeCheck } from 'lucide-react';
+import { Home, Box, Grid3x3, Users, Truck, Building2, BadgeCheck, History } from 'lucide-react';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 import { useAuthStore } from '@/store/auth.store';
 import { useRoute, type Route } from '@/lib/router';
@@ -18,7 +18,9 @@ interface NavSection {
 const NAV: NavSection[] = [
   { label: 'หลัก', items: [{ key: 'dashboard', label: 'แดชบอร์ด', Icon: Home }] },
   { label: 'คลังสินค้า', items: [
+    { key: 'inventory/stock', label: 'สต็อกสินค้า', Icon: Box },
     { key: 'inventory/product', label: 'รายการสินค้า', Icon: Grid3x3 },
+    { key: 'inventory/movements', label: 'ประวัติการเคลื่อนไหว', Icon: History },
   ]},
   { label: 'จัดซื้อ', items: [
     { key: 'purchase/vendor', label: 'ผู้ขาย', Icon: Truck },

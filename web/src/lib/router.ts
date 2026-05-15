@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 
 export type Route =
   | 'dashboard'
+  | 'inventory/stock'
   | 'inventory/product'
+  | 'inventory/movements'
   | 'sales/customer'
   | 'purchase/vendor'
   | 'admin/branch'

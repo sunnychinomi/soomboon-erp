@@ -4,6 +4,8 @@ import LoginPage from './features/auth/LoginPage';
 import AppShell from './components/layout/AppShell';
 import DashboardPage from './features/dashboard/DashboardPage';
 import ProductsPage from './features/products/ProductsPage';
+import StockPage from './features/inventory/StockPage';
+import StockMovementsPage from './features/inventory/StockMovementsPage';
 import CustomersPage from './features/customers/CustomersPage';
 import VendorsPage from './features/vendors/VendorsPage';
 import BranchesPage from './features/branches/BranchesPage';
@@ -25,12 +27,14 @@ export default function App() {
 
   const renderPage = () => {
     switch (route) {
-      case 'inventory/product': return <ProductsPage />;
-      case 'sales/customer':    return <CustomersPage />;
-      case 'purchase/vendor':   return <VendorsPage />;
-      case 'admin/branch':      return <BranchesPage />;
-      case 'admin/employee':    return <EmployeesPage />;
-      default:                  return <DashboardPage />;
+      case 'inventory/stock':     return <StockPage />;
+      case 'inventory/product':   return <ProductsPage />;
+      case 'inventory/movements': return <StockMovementsPage />;
+      case 'sales/customer':      return <CustomersPage />;
+      case 'purchase/vendor':     return <VendorsPage />;
+      case 'admin/branch':        return <BranchesPage />;
+      case 'admin/employee':      return <EmployeesPage />;
+      default:                    return <DashboardPage />;
     }
   };
 

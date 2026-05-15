@@ -169,6 +169,53 @@ export interface BranchInput {
   isActive?: boolean;
 }
 
+// Stocks
+export type StockStatus = 'ok' | 'low' | 'out';
+export type MovementDirection = 'In' | 'Out' | 'Adjust';
+export type MovementReferenceType = 'Receiving' | 'SalesOrder' | 'Manual' | 'Adjustment';
+
+export interface StockListItem {
+  id: string;
+  productId: string;
+  productCode: string;
+  productName: string;
+  brand: string | null;
+  unit: string;
+  cost: number;
+  price: number;
+  reorderLevel: number;
+  branchId: string;
+  branchCode: string;
+  branchName: string;
+  quantity: number;
+  status: StockStatus;
+  vendorName: string | null;
+  updatedAt: string;
+}
+
+export interface AdjustStockInput {
+  productId: string;
+  branchId: string;
+  newQuantity: number;
+  note?: string | null;
+}
+
+export interface StockMovement {
+  id: string;
+  createdAt: string;
+  direction: MovementDirection;
+  productId: string;
+  productCode: string;
+  productName: string;
+  branchId: string;
+  branchName: string;
+  quantity: number;
+  unitPrice: number | null;
+  referenceType: MovementReferenceType;
+  referenceNo: string | null;
+  note: string | null;
+}
+
 // Employees
 export interface Employee {
   id: string;

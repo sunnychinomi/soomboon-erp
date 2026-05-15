@@ -6,7 +6,9 @@ import { useRoute } from '@/lib/router';
 
 const ROUTE_LABELS: Record<string, string> = {
   'dashboard': 'แดชบอร์ด',
+  'inventory/stock': 'สต็อกสินค้า',
   'inventory/product': 'รายการสินค้า',
+  'inventory/movements': 'ประวัติการเคลื่อนไหว',
   'sales/customer': 'ลูกค้า',
   'purchase/vendor': 'ผู้ขาย',
   'admin/branch': 'สาขา',
