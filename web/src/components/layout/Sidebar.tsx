@@ -1,4 +1,4 @@
-import { Home, Box, Grid3x3, Users, Truck, Building2, BadgeCheck, History, ShoppingCart, Inbox } from 'lucide-react';
+import { Home, Box, Grid3x3, Users, Truck, Building2, BadgeCheck, History, ShoppingCart, Inbox, Tag, Receipt, Star, FileText } from 'lucide-react';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 import { useAuthStore } from '@/store/auth.store';
 import { useRoute, type Route } from '@/lib/router';
@@ -28,7 +28,11 @@ const NAV: NavSection[] = [
     { key: 'purchase/vendor', label: 'ผู้ขาย', Icon: Truck },
   ]},
   { label: 'การขาย', items: [
+    { key: 'sales/so', label: 'ใบขาย/ใบกำกับภาษี', Icon: Tag },
+    { key: 'sales/receipt', label: 'ใบเสร็จรับเงิน', Icon: Receipt },
     { key: 'sales/customer', label: 'ลูกค้า', Icon: Users },
+    { key: 'sales/promotion', label: 'โปรโมชัน', Icon: Star },
+    { key: 'sales/credit-note', label: 'ใบลดหนี้', Icon: FileText },
   ]},
   { label: 'ผู้ดูแลระบบ', items: [
     { key: 'admin/branch', label: 'สาขา', Icon: Building2 },

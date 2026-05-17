@@ -372,3 +372,170 @@ export interface CreateReceivingInput {
   attachmentUrl?: string | null;
   items: { purchaseOrderItemId: string; receivedQty: number }[];
 }
+
+// Sales Orders
+export type SalesOrderStatus = 'Unpaid' | 'Partial' | 'Paid' | 'Cancelled';
+export type PaymentMethod = 'Cash' | 'Transfer' | 'Cheque' | 'CreditCard';
+
+export interface SalesOrderListItem {
+  id: string;
+  invoiceNo: string;
+  orderDate: string;
+  customerId: string | null;
+  customerName: string;
+  branchId: string | null;
+  branchName: string | null;
+  itemCount: number;
+  total: number;
+  paidAmount: number;
+  balance: number;
+  status: SalesOrderStatus;
+  dueDate: string | null;
+  createdAt: string;
+}
+
+export interface SalesOrderItem {
+  id: string;
+  productId: string | null;
+  productName: string;
+  productCode: string | null;
+  quantity: number;
+  unitPrice: number;
+  discountPct: number;
+  discountAmount: number;
+  promotionId: string | null;
+  promotionName: string | null;
+  total: number;
+  lineNo: number;
+}
+
+export interface SalesOrderDetail {
+  id: string;
+  invoiceNo: string;
+  orderDate: string;
+  customerId: string | null;
+  customerName: string;
+  customerAddress: string | null;
+  customerPhone: string | null;
+  customerTaxId: string | null;
+  branchId: string | null;
+  branchName: string | null;
+  salespersonId: string | null;
+  salespersonName: string | null;
+  paymentMethod: string | null;
+  paymentTerms: string | null;
+  dueDate: string | null;
+  subtotal: number;
+  discount: number;
+  vat: number;
+  total: number;
+  paidAmount: number;
+  balance: number;
+  status: SalesOrderStatus;
+  note: string | null;
+  createdAt: string;
+  updatedAt: string;
+  items: SalesOrderItem[];
+  receipts: ReceiptListItem[];
+}
+
+export interface CreateSoItem {
+  productId?: string | null;
+  productName: string;
+  productCode?: string | null;
+  quantity: number;
+  unitPrice: number;
+  discountPct: number;
+  discountAmount: number;
+  promotionId?: string | null;
+}
+
+export interface CreateSalesOrderInput {
+  orderDate?: string | null;
+  customerId: string;
+  branchId?: string | null;
+  salespersonId?: string | null;
+  paymentMethod?: string | null;
+  paymentTerms?: string | null;
+  dueDate?: string | null;
+  discount: number;
+  vatRate: number;
+  note?: string | null;
+  items: CreateSoItem[];
+}
+
+// Receipts
+export interface ReceiptListItem {
+  id: string;
+  receiptNo: string;
+  receiptDate: string;
+  salesOrderId: string | null;
+  invoiceNo: string | null;
+  customerId: string | null;
+  customerName: string;
+  amount: number;
+  paymentMethod: PaymentMethod;
+  paymentReference: string | null;
+  note: string | null;
+  createdAt: string;
+}
+
+export interface CreateReceiptInput {
+  salesOrderId: string;
+  receiptDate?: string | null;
+  amount: number;
+  paymentMethod: PaymentMethod;
+  paymentReference?: string | null;
+  note?: string | null;
+}
+
+// Promotions
+export interface Promotion {
+  id: string;
+  code: string;
+  name: string;
+  description: string | null;
+  discountPct: number | null;
+  discountAmount: number | null;
+  startDate: string;
+  endDate: string;
+  isActive: boolean;
+  isCurrentlyActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface PromotionInput {
+  code?: string;
+  name: string;
+  description?: string | null;
+  discountPct?: number | null;
+  discountAmount?: number | null;
+  startDate: string;
+  endDate: string;
+  isActive?: boolean;
+}
+
+// Credit Notes
+export interface CreditNoteListItem {
+  id: string;
+  cnNo: string;
+  cnDate: string;
+  referenceInvoiceId: string | null;
+  referenceInvoiceNo: string | null;
+  customerId: string | null;
+  customerName: string;
+  reason: string;
+  amount: number;
+  note: string | null;
+  createdAt: string;
+}
+
+export interface CreateCreditNoteInput {
+  cnDate?: string | null;
+  referenceInvoiceId?: string | null;
+  customerId: string;
+  reason: string;
+  amount: number;
+  note?: string | null;
+}

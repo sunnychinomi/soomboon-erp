@@ -8,6 +8,10 @@ export type Route =
   | 'purchase/po'
   | 'purchase/receiving'
   | 'purchase/vendor'
+  | 'sales/so'
+  | 'sales/receipt'
+  | 'sales/promotion'
+  | 'sales/credit-note'
   | 'sales/customer'
   | 'admin/branch'
   | 'admin/employee';
