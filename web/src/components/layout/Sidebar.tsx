@@ -1,4 +1,4 @@
-import { Home, Box, Grid3x3, Users, Truck, Building2, BadgeCheck, History } from 'lucide-react';
+import { Home, Box, Grid3x3, Users, Truck, Building2, BadgeCheck, History, ShoppingCart, Inbox } from 'lucide-react';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 import { useAuthStore } from '@/store/auth.store';
 import { useRoute, type Route } from '@/lib/router';
@@ -23,6 +23,8 @@ const NAV: NavSection[] = [
     { key: 'inventory/movements', label: 'ประวัติการเคลื่อนไหว', Icon: History },
   ]},
   { label: 'จัดซื้อ', items: [
+    { key: 'purchase/po', label: 'ใบสั่งซื้อ', Icon: ShoppingCart },
+    { key: 'purchase/receiving', label: 'รับสินค้า', Icon: Inbox },
     { key: 'purchase/vendor', label: 'ผู้ขาย', Icon: Truck },
   ]},
   { label: 'การขาย', items: [

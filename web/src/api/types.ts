@@ -240,3 +240,135 @@ export interface EmployeeInput {
   email?: string | null;
   isActive?: boolean;
 }
+
+// Purchase Orders
+export type PoStatus = 'Pending' | 'Partial' | 'Received' | 'Cancelled';
+
+export interface PurchaseOrderListItem {
+  id: string;
+  poNo: string;
+  poDate: string;
+  vendorId: string | null;
+  vendorName: string | null;
+  branchId: string | null;
+  branchName: string | null;
+  itemCount: number;
+  total: number;
+  status: PoStatus;
+  createdAt: string;
+}
+
+export interface PurchaseOrderItem {
+  id: string;
+  productId: string | null;
+  productName: string;
+  productCode: string | null;
+  quantity: number;
+  receivedQuantity: number;
+  unitPrice: number;
+  total: number;
+  lineNo: number;
+}
+
+export interface PurchaseOrderDetail {
+  id: string;
+  poNo: string;
+  poDate: string;
+  vendorId: string | null;
+  vendorName: string | null;
+  vendorAddress: string | null;
+  vendorPhone: string | null;
+  vendorTaxId: string | null;
+  branchId: string | null;
+  branchName: string | null;
+  shipTo: string | null;
+  paymentTerms: string | null;
+  subtotal: number;
+  discount: number;
+  vat: number;
+  total: number;
+  status: PoStatus;
+  note: string | null;
+  createdAt: string;
+  updatedAt: string;
+  items: PurchaseOrderItem[];
+}
+
+export interface CreatePoItem {
+  productId?: string | null;
+  productName: string;
+  productCode?: string | null;
+  quantity: number;
+  unitPrice: number;
+}
+
+export interface CreatePurchaseOrderInput {
+  poDate?: string | null;
+  vendorId: string;
+  branchId?: string | null;
+  shipTo?: string | null;
+  paymentTerms?: string | null;
+  discount: number;
+  vatRate: number;
+  note?: string | null;
+  items: CreatePoItem[];
+}
+
+// Receivings
+export type ReceivingStatus = 'Complete' | 'Partial';
+
+export interface ReceivingListItem {
+  id: string;
+  receivingNo: string;
+  receivingDate: string;
+  purchaseOrderId: string | null;
+  purchaseOrderNo: string | null;
+  vendorId: string | null;
+  vendorName: string | null;
+  vendorInvoiceNo: string | null;
+  amount: number;
+  branchId: string | null;
+  branchName: string | null;
+  itemCount: number;
+  status: ReceivingStatus;
+  createdAt: string;
+}
+
+export interface ReceivingItem {
+  id: string;
+  purchaseOrderItemId: string | null;
+  productId: string | null;
+  productName: string;
+  orderedQty: number | null;
+  receivedQty: number;
+  unitPrice: number | null;
+  lineNo: number;
+}
+
+export interface ReceivingDetail {
+  id: string;
+  receivingNo: string;
+  receivingDate: string;
+  purchaseOrderId: string | null;
+  purchaseOrderNo: string | null;
+  vendorId: string | null;
+  vendorName: string | null;
+  vendorInvoiceNo: string | null;
+  amount: number;
+  branchId: string | null;
+  branchName: string | null;
+  status: ReceivingStatus;
+  attachmentUrl: string | null;
+  note: string | null;
+  createdAt: string;
+  items: ReceivingItem[];
+}
+
+export interface CreateReceivingInput {
+  purchaseOrderId: string;
+  receivingDate?: string | null;
+  vendorInvoiceNo?: string | null;
+  note?: string | null;
+  attachmentUrl?: string | null;
+  items: { purchaseOrderItemId: string; receivedQty: number }[];
+}

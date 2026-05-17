@@ -9,8 +9,10 @@ const ROUTE_LABELS: Record<string, string> = {
   'inventory/stock': 'สต็อกสินค้า',
   'inventory/product': 'รายการสินค้า',
   'inventory/movements': 'ประวัติการเคลื่อนไหว',
-  'sales/customer': 'ลูกค้า',
+  'purchase/po': 'ใบสั่งซื้อ',
+  'purchase/receiving': 'รับสินค้า',
   'purchase/vendor': 'ผู้ขาย',
+  'sales/customer': 'ลูกค้า',
   'admin/branch': 'สาขา',
   'admin/employee': 'พนักงาน',
 };

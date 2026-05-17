@@ -5,8 +5,10 @@ export type Route =
   | 'inventory/stock'
   | 'inventory/product'
   | 'inventory/movements'
-  | 'sales/customer'
+  | 'purchase/po'
+  | 'purchase/receiving'
   | 'purchase/vendor'
+  | 'sales/customer'
   | 'admin/branch'
   | 'admin/employee';
 
